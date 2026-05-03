@@ -5,9 +5,17 @@
     <AppSidebar />
     
     <div class="main-content">
-      <!-- We will put your Views here later -->
-      <h2>System Initialization</h2>
-      <p>Welcome to the DHL SmartSOP system. Select a module from the sidebar.</p>
+      <!-- Pass 'sops' instead of 'articles' -->
+      <ViewerView 
+        v-if="activeTab === 'viewer'" 
+        :sops="sops" 
+      />
+      
+      <!-- Listen for 'add-sop' instead of 'add-article' -->
+      <UploadConsoleView 
+        v-else-if="activeTab === 'upload'" 
+        @add-sop="addSop" 
+      />
     </div>
   </div>
 
@@ -18,13 +26,53 @@
 import AppHeader from './components/AppHeader.vue'
 import AppSidebar from './components/AppSidebar.vue'
 import AppFooter from './components/AppFooter.vue'
+import ViewerView from './views/ViewerView.vue'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AppSidebar,
-    AppFooter
+    AppFooter,
+    ViewerView
+  },
+  data() {
+    return {
+      activeTab: 'viewer',
+      sops: [
+        {
+          id: 1,
+          title: "SOP: Handling MS Teams Damaged Cargo Reports",
+          status: "Published",
+          creator: "AI Auto-Bot",
+          date: "2026-05-01",
+          tags: ["Cargo", "Damage", "MS Teams"]
+        },
+        {
+          id: 2,
+          title: "Procedure for Missing Telegram Waybills",
+          status: "Draft",
+          creator: "John Doe (Reviewer)",
+          date: "2026-05-03",
+          tags: ["Waybill", "Telegram", "Error"]
+        },
+        {
+          id: 3,
+          title: "Warehouse Safety Guidelines (from PPT)",
+          status: "Reviewed",
+          creator: "Jane Smith",
+          date: "2026-05-02",
+          tags: ["Safety", "Warehouse", "Training"]
+        }
+      ]
+    }
+  },
+  methods: {
+    // Changed from addArticle to addSop
+    addSop(newSop) {
+      this.sops.push(newSop);
+      this.activeTab = 'viewer'; 
+    }
   }
 }
 </script>
