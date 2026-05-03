@@ -13,11 +13,19 @@
       <ViewerView 
         v-if="activeTab === 'viewer'" 
         :sops="sops" 
+        @edit-sop="openEditor"
       />
       
       <UploadConsoleView 
         v-else-if="activeTab === 'upload'" 
         @add-sop="addSop" 
+      />
+
+      <DraftBuilderView
+        v-else-if="activeTab === 'draft'"
+        :sopToEdit="selectedSop"
+        @update-sop="saveSop"
+        @go-back="activeTab = 'viewer'"
       />
     </div>
   </div>
@@ -31,6 +39,7 @@ import AppSidebar from './components/AppSidebar.vue'
 import AppFooter from './components/AppFooter.vue'
 import ViewerView from './views/ViewerView.vue'
 import UploadConsoleView from './views/UploadConsoleView.vue'
+import DraftBuilderView from './views/DraftBuilderView.vue'
 
 export default {
   name: 'App',
@@ -39,11 +48,13 @@ export default {
     AppSidebar,
     AppFooter,
     ViewerView,
-    UploadConsoleView
+    UploadConsoleView,
+    DraftBuilderView
   },
   data() {
     return {
-      activeTab: 'viewer', // 3. This controls what page shows first!
+      activeTab: 'viewer', 
+      selectedSop: null, // ERROR 1 FIXED: Added this missing variable!
       sops: [
         {
           id: 1,
@@ -67,7 +78,22 @@ export default {
   methods: {
     addSop(newSop) {
       this.sops.push(newSop);
-      this.activeTab = 'viewer'; // Switches back to viewer after submit
+      this.activeTab = 'viewer'; 
+    },
+    openEditor(sop) {
+      this.selectedSop = sop;
+      this.activeTab = 'draft';
+    },
+    // ERROR 2 FIXED: Added the missing saveSop method!
+    saveSop(updatedSop) {
+      // Find the specific SOP in the array and update it
+      const index = this.sops.findIndex(s => s.id === updatedSop.id);
+      if (index !== -1) {
+        this.sops[index] = updatedSop;
+      }
+      // Clear the selection and go back to the dashboard
+      this.activeTab = 'viewer';
+      this.selectedSop = null;
     }
   }
 }

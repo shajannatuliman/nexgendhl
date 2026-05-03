@@ -14,13 +14,12 @@
       </select>
     </div>
 
-    <!-- Article List Loop -->
     <div v-if="filteredSops.length > 0">
-      <!-- Changed ArticleCard to SopsCard, and passed :sop="sop" -->
       <SopsCard 
         v-for="sop in filteredSops" 
         :key="sop.id" 
-        :sop="sop" 
+        :sop="sop"
+        @edit-sop="$emit('edit-sop', $event)" 
       />
     </div>
     
@@ -36,6 +35,7 @@ import SopsCard from '../components/SopsCard.vue'
 
 export default {
   name: 'ViewerView',
+  emits: ['edit-sop'],
   components: {
     SopsCard // Registered new component name
   },

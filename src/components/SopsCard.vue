@@ -19,13 +19,15 @@
       </span>
     </div>
     
-    <button class="action-btn">View Details</button>
+    <!-- Add the @click event here -->
+    <button class="action-btn" @click="$emit('edit-sop', sop)">View / Edit Details</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'SopsCard', // Updated component name
+  emits: ['edit-sop'],
   props: {
     sop: {          // Now expecting a single 'sop' object
       type: Object,
