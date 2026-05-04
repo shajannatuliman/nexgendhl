@@ -1,0 +1,62 @@
+{
+  "sops": [
+    {
+      "id": "1",
+      "title": "SOP: Handling MS Teams Damaged Cargo Reports tyeke",
+      "status": "Published",
+      "creator": "AI Auto-Bot zaheen",
+      "date": "2026-05-01",
+      "tags": [
+        "Cargo",
+        "Damage",
+        "MSTeams"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Procedure for Missing Telegram Waybills",
+      "status": "Draft",
+      "creator": "John Doe (Reviewer)",
+      "date": "2026-05-03",
+      "tags": [
+        "Waybill",
+        "Telegram",
+        "Error"
+      ]
+    },
+    {
+      "id": "09sV0oh63O8",
+      "title": "AI Draft generated from MS Teams data",
+      "status": "Draft",
+      "creator": "System RPA Bot",
+      "date": "2026-05-04",
+      "tags": [
+        "Auto-Generated",
+        "MSTeams"
+      ]
+    },
+    {
+      "id": "3vF5dGn9cfE",
+      "title": "AI Draft generated from Email data",
+      "status": "Reviewed",
+      "creator": "System RPA Bot",
+      "date": "2026-05-04",
+      "tags": [
+        "Auto-Generated",
+        "Email"
+      ]
+    },
+    {
+      "id": "kqp0FaLltHw",
+      "title": "SOP Draft: Extracted from CI SECJ3343 Software Quality Assurance.pdf",
+      "status": "Draft",
+      "creator": "System RPA Bot",
+      "date": "2026-05-04",
+      "tags": [
+        "Auto-Generated",
+        "Document"
+      ]
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

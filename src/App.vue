@@ -44,56 +44,72 @@ import DraftBuilderView from './views/DraftBuilderView.vue'
 export default {
   name: 'App',
   components: {
-    AppHeader,
-    AppSidebar,
-    AppFooter,
-    ViewerView,
-    UploadConsoleView,
-    DraftBuilderView
+    AppHeader, AppSidebar, AppFooter, ViewerView, UploadConsoleView, DraftBuilderView
   },
   data() {
     return {
       activeTab: 'viewer', 
-      selectedSop: null, // ERROR 1 FIXED: Added this missing variable!
-      sops: [
-        {
-          id: 1,
-          title: "SOP: Handling MS Teams Damaged Cargo Reports",
-          status: "Published",
-          creator: "AI Auto-Bot",
-          date: "2026-05-01",
-          tags: ["Cargo", "Damage", "MSTeams"]
-        },
-        {
-          id: 2,
-          title: "Procedure for Missing Telegram Waybills",
-          status: "Draft",
-          creator: "John Doe (Reviewer)",
-          date: "2026-05-03",
-          tags: ["Waybill", "Telegram", "Error"]
-        }
-      ]
+      selectedSop: null, 
+      sops: [] // Start completely empty! Data comes from the API now.
     }
   },
+  
+  // 1. READ (GET) - Fetch data from db.json when the app loads
+  async mounted() {
+    try {
+      const response = await fetch('http://localhost:3000/sops');
+      this.sops = await response.json();
+    } catch (error) {
+      console.error("Error fetching SOPs:", error);
+    }
+  },
+  
   methods: {
-    addSop(newSop) {
-      this.sops.push(newSop);
-      this.activeTab = 'viewer'; 
+    // 2. CREATE (POST) - Send new uploaded data to the database
+    async addSop(newSop) {
+      newSop.id = String(newSop.id); // JSON Server v1+ requires IDs to be strings
+      
+      try {
+        const response = await fetch('http://localhost:3000/sops', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newSop)
+        });
+        const savedSop = await response.json();
+        
+        this.sops.push(savedSop); // Add it to the UI
+        this.activeTab = 'viewer'; // Switch back to dashboard
+      } catch (error) {
+        console.error("Error saving new SOP:", error);
+      }
     },
+
     openEditor(sop) {
       this.selectedSop = sop;
       this.activeTab = 'draft';
     },
-    // ERROR 2 FIXED: Added the missing saveSop method!
-    saveSop(updatedSop) {
-      // Find the specific SOP in the array and update it
-      const index = this.sops.findIndex(s => s.id === updatedSop.id);
-      if (index !== -1) {
-        this.sops[index] = updatedSop;
+
+    // 3. UPDATE (PUT) - Save edits from the Draft Builder to the database
+    async saveSop(updatedSop) {
+      try {
+        const response = await fetch(`http://localhost:3000/sops/${updatedSop.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updatedSop)
+        });
+        const finalSop = await response.json();
+        
+        // Find the SOP in the UI array and update it
+        const index = this.sops.findIndex(s => s.id === finalSop.id);
+        if (index !== -1) {
+          this.sops[index] = finalSop;
+        }
+        
+        this.activeTab = 'viewer';
+        this.selectedSop = null;
+      } catch (error) {
+        console.error("Error updating SOP:", error);
       }
-      // Clear the selection and go back to the dashboard
-      this.activeTab = 'viewer';
-      this.selectedSop = null;
     }
   }
 }
