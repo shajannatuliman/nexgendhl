@@ -41,30 +41,52 @@ export default {
 </script>
 
 <style scoped>
-/* Keep the exact same CSS as before, just changed the main class name to .sop-card */
 .sop-card {
   background: white;
-  border: 1px solid var(--border-soft);
-  border-left: 5px solid var(--dhl-red);
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border: none; /* Remove the harsh border */
+  border-left: 6px solid var(--dhl-red);
+  border-radius: 10px; /* Softer corners */
+  padding: 20px;
+  margin-bottom: 20px;
+  /* Add a soft, modern drop shadow */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+  /* Add a smooth transition for the hover effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
 }
+
+/* When the mouse hovers over the card, it lifts up slightly */
+.sop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(212, 5, 17, 0.12); /* Subtle red shadow tint */
+}
+
 .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .card-header h3 { margin: 0; font-size: 18px; color: var(--text-dark); }
+
 .badge { padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
 .published { background: #e6f4ea; color: #1e8e3e; }
 .draft { background: #fef7e0; color: #b06000; }
 .reviewed { background: #e8f0fe; color: #1a73e8; }
+
 .card-meta { display: flex; gap: 20px; font-size: 13px; color: #666; margin-bottom: 10px; }
 .card-tags { margin-bottom: 15px; }
 .tag { background: var(--bg-light); color: var(--text-dark); font-size: 12px; padding: 4px 8px; border-radius: 4px; margin-right: 6px; border: 1px solid #ccc; }
 
 /* Action Buttons Styling */
 .card-actions { display: flex; gap: 10px; }
-.action-btn { background: transparent; color: var(--dhl-red); border: 1px solid var(--dhl-red); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
-.action-btn:hover { background: var(--dhl-red); color: white; }
-.delete-btn { background: transparent; color: #d9534f; border: 1px solid #d9534f; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
-.delete-btn:hover { background: #d9534f; color: white; }
+
+.action-btn, .delete-btn { 
+  background: transparent; 
+  padding: 8px 16px; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  font-weight: 600; 
+  transition: all 0.2s ease; 
+}
+
+.action-btn { color: var(--dhl-red); border: 1.5px solid var(--dhl-red); }
+.action-btn:hover { background: var(--dhl-red); color: white; transform: scale(1.02); }
+
+.delete-btn { color: #d9534f; border: 1.5px solid #d9534f; }
+.delete-btn:hover { background: #d9534f; color: white; transform: scale(1.02); }
 </style>

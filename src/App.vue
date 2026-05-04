@@ -139,16 +139,39 @@ export default {
 :root {
   --dhl-red: #D40511;
   --dhl-yellow: #FFCC00;
-  --dark-bg: #222222;
-  --bg-light: #F4F7F9;
+  --dark-bg: #1A1A1A; /* Slightly softer than pure black */
+  --bg-light: #F0F4F8; /* A very soft, modern grayish-blue background */
   --surface: #FFFFFF;
-  --text-dark: #333333;
-  --border-soft: #DDDDDD;
+  --text-dark: #2D3748; /* Softer text color, easier to read */
+  --border-soft: #E2E8F0;
 }
 
 * { box-sizing: border-box; }
-body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-dark); }
-.layout { display: flex; min-height: calc(100vh - 150px); }
-.main-content { flex: 1; padding: 30px; background: var(--surface); box-shadow: inset 0 0 10px rgba(0,0,0,0.02); }
-.main-content h2 { margin-top: 0; padding-bottom: 10px; border-bottom: 2px solid var(--dhl-red); color: var(--dark-bg); }
+body { 
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
+  margin: 0; 
+  background-color: var(--bg-light); 
+  color: var(--text-dark); 
+}
+
+.layout { 
+  display: flex; 
+  min-height: calc(100vh - 150px); 
+}
+
+.main-content { 
+  flex: 1; 
+  padding: 40px; /* Give it more breathing room */
+  background: var(--bg-light); /* Use the soft background instead of white */
+  box-shadow: inset 4px 0 10px rgba(0,0,0,0.02); 
+}
+
+.main-content h2 { 
+  margin-top: 0; 
+  padding-bottom: 12px; 
+  border-bottom: 3px solid var(--dhl-red); /* Thicker, bolder underline */
+  color: var(--dark-bg); 
+  font-weight: 800;
+  letter-spacing: -0.5px; /* Tighter letter spacing looks more modern */
+}
 </style>
