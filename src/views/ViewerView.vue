@@ -15,11 +15,13 @@
     </div>
 
     <div v-if="filteredSops.length > 0">
+      <!-- Added the @delete-sop listener here -->
       <SopsCard 
         v-for="sop in filteredSops" 
         :key="sop.id" 
         :sop="sop"
         @edit-sop="$emit('edit-sop', $event)" 
+        @delete-sop="$emit('delete-sop', $event)"
       />
     </div>
     
@@ -30,14 +32,14 @@
 </template>
 
 <script>
-// IMPORTANT: Update the import path to the new file name
 import SopsCard from '../components/SopsCard.vue'
 
 export default {
   name: 'ViewerView',
-  emits: ['edit-sop'],
+  // Added 'delete-sop' to the emits array
+  emits: ['edit-sop', 'delete-sop'],
   components: {
-    SopsCard // Registered new component name
+    SopsCard
   },
   props: {
     sops: {  // Expecting 'sops' array from App.vue
@@ -52,8 +54,8 @@ export default {
     }
   },
   computed: {
-    filteredSops() { // Changed computed name
-      return this.sops.filter(sop => { // Changed loop variable
+    filteredSops() { 
+      return this.sops.filter(sop => { 
         const matchesSearch = sop.title.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
                               sop.tags.some(tag => tag.toLowerCase().includes(this.searchQuery.toLowerCase())) ||
                               sop.creator.toLowerCase().includes(this.searchQuery.toLowerCase());
@@ -68,7 +70,6 @@ export default {
 </script>
 
 <style scoped>
-/* Keep existing CSS from previous step */
 .controls { display: flex; gap: 15px; margin-bottom: 25px; background: var(--bg-light); padding: 15px; border-radius: 8px; border: 1px solid var(--border-soft); }
 .search-bar { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
 .filter-dropdown { padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background: white; }

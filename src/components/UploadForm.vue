@@ -54,27 +54,36 @@ export default {
     },
     
     submitUpload(event) {
-      // 1. Create a mock SOP object from the form data
-      // In the real system, saving this triggers UiPath to do the extraction.
+      // 1. Create a dynamic title based on whether a file was uploaded!
+      let dynamicTitle = `AI Draft generated from ${this.sourceType} data`;
+      
+      if (this.fileName) {
+        // If they attached a file, use the file name in the title
+        dynamicTitle = `SOP Draft: Extracted from ${this.fileName}`;
+      } else if (this.rawText) {
+        // Optional: If they just pasted text, add a little snippet of it
+        dynamicTitle = `AI Draft: ${this.rawText.substring(0, 15)}...`;
+      }
+
+      // 2. Create the mock SOP using our new dynamic title
       const newSop = {
-        id: Date.now(), // Generates a random unique ID
-        title: `AI Draft generated from ${this.sourceType} data`,
+        id: Date.now(), 
+        title: dynamicTitle, // <-- Use the smart title here!
         status: "Draft",
         creator: "System RPA Bot",
-        date: new Date().toISOString().split('T')[0], // Gets today's date (e.g., 2026-05-03)
+        date: new Date().toISOString().split('T')[0], 
         tags: ["Auto-Generated", this.sourceType.replace(/\s+/g, '')]
       };
 
-      // 2. Emit this new SOP object UP to UploadConsoleView.vue
+      // 3. Emit this new SOP object UP
       this.$emit('process-upload', newSop);
 
-      // 3. Clear the form for the next upload
+      // 4. Clear the form
       this.sourceType = '';
       this.rawText = '';
       this.fileName = null;
-      event.target.reset(); // Visually clears the file input
+      event.target.reset(); 
       
-      // Optional: A little alert so you know it worked before it redirects
       alert("Raw data submitted successfully! Generating draft SOP...");
     }
   }

@@ -14,6 +14,7 @@
         v-if="activeTab === 'viewer'" 
         :sops="sops" 
         @edit-sop="openEditor"
+        @delete-sop="deleteSop"
       />
       
       <UploadConsoleView 
@@ -109,6 +110,24 @@ export default {
         this.selectedSop = null;
       } catch (error) {
         console.error("Error updating SOP:", error);
+      }
+    },
+
+    // 4. DELETE - Remove SOP from the database
+    async deleteSop(id) {
+      // Add a quick confirmation popup so users don't delete by accident!
+      if (!confirm("Are you sure you want to delete this SOP?")) return;
+
+      try {
+        // 1. Tell json-server to delete it from db.json
+        await fetch(`http://localhost:3000/sops/${id}`, {
+          method: 'DELETE'
+        });
+        
+        // 2. Remove it from the Vue array so it disappears from the screen instantly
+        this.sops = this.sops.filter(sop => sop.id !== id);
+      } catch (error) {
+        console.error("Error deleting SOP:", error);
       }
     }
   }

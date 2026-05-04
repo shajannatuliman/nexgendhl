@@ -25,28 +25,6 @@
       ]
     },
     {
-      "id": "09sV0oh63O8",
-      "title": "AI Draft generated from MS Teams data",
-      "status": "Draft",
-      "creator": "System RPA Bot",
-      "date": "2026-05-04",
-      "tags": [
-        "Auto-Generated",
-        "MSTeams"
-      ]
-    },
-    {
-      "id": "3vF5dGn9cfE",
-      "title": "AI Draft generated from Email data",
-      "status": "Reviewed",
-      "creator": "System RPA Bot",
-      "date": "2026-05-04",
-      "tags": [
-        "Auto-Generated",
-        "Email"
-      ]
-    },
-    {
       "id": "kqp0FaLltHw",
       "title": "SOP Draft: Extracted from CI SECJ3343 Software Quality Assurance.pdf",
       "status": "Draft",

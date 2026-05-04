@@ -19,15 +19,18 @@
       </span>
     </div>
     
-    <!-- Add the @click event here -->
-    <button class="action-btn" @click="$emit('edit-sop', sop)">View / Edit Details</button>
+    <!-- Updated action buttons container -->
+    <div class="card-actions">
+      <button class="action-btn" @click="$emit('edit-sop', sop)">View / Edit Details</button>
+      <button class="delete-btn" @click="$emit('delete-sop', sop.id)">Delete</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'SopsCard', // Updated component name
-  emits: ['edit-sop'],
+  emits: ['edit-sop', 'delete-sop'], // Added the delete emit here
   props: {
     sop: {          // Now expecting a single 'sop' object
       type: Object,
@@ -57,6 +60,11 @@ export default {
 .card-meta { display: flex; gap: 20px; font-size: 13px; color: #666; margin-bottom: 10px; }
 .card-tags { margin-bottom: 15px; }
 .tag { background: var(--bg-light); color: var(--text-dark); font-size: 12px; padding: 4px 8px; border-radius: 4px; margin-right: 6px; border: 1px solid #ccc; }
+
+/* Action Buttons Styling */
+.card-actions { display: flex; gap: 10px; }
 .action-btn { background: transparent; color: var(--dhl-red); border: 1px solid var(--dhl-red); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
 .action-btn:hover { background: var(--dhl-red); color: white; }
+.delete-btn { background: transparent; color: #d9534f; border: 1px solid #d9534f; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+.delete-btn:hover { background: #d9534f; color: white; }
 </style>
