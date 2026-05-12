@@ -1,61 +1,53 @@
 <template>
-  <AppHeader />
-  
-  <div class="layout">
-    <!-- 1. Pass currentTab and LISTEN for change-tab -->
-    <AppSidebar 
-      :currentTab="activeTab" 
-      @change-tab="activeTab = $event" 
-    />
-    
-    <div class="main-content">
-      <!-- 2. v-if checks the activeTab variable to show the right page -->
-      <ViewerView 
-        v-if="activeTab === 'viewer'" 
-        :sops="sops" 
-        @edit-sop="openEditor"
-        @delete-sop="deleteSop"
-      />
-      
-      <UploadConsoleView 
-        v-else-if="activeTab === 'upload'" 
-        @add-sop="addSop" 
-      />
-
-      <DraftBuilderView
-        v-else-if="activeTab === 'draft'"
-        :sopToEdit="selectedSop"
-        @update-sop="saveSop"
-        @go-back="activeTab = 'viewer'"
-      />
-    </div>
+  <div v-if="$route.name === 'login'" class="login-fullscreen">
+    <router-view></router-view>
   </div>
 
-  <AppFooter />
+  <div v-else>
+    <AppHeader />
+    
+    <div class="layout">
+      <AppSidebar 
+        :currentTab="$route.name" 
+        @change-tab="$router.push({ name: $event })" 
+      />
+      
+      <div class="main-content">
+        <router-view
+          :sops="sops" 
+          :sopToEdit="selectedSop"
+          @add-sop="addSop"
+          @edit-sop="openEditor"
+          @update-sop="saveSop"
+          @delete-sop="deleteSop"
+          @go-back="$router.push('/viewer')"
+        ></router-view>
+      </div>
+    </div>
+
+    <AppFooter />
+  </div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader.vue'
 import AppSidebar from './components/AppSidebar.vue'
 import AppFooter from './components/AppFooter.vue'
-import ViewerView from './views/ViewerView.vue'
-import UploadConsoleView from './views/UploadConsoleView.vue'
-import DraftBuilderView from './views/DraftBuilderView.vue'
 
 export default {
   name: 'App',
   components: {
-    AppHeader, AppSidebar, AppFooter, ViewerView, UploadConsoleView, DraftBuilderView
+    AppHeader, 
+    AppSidebar, 
+    AppFooter
   },
   data() {
     return {
-      activeTab: 'viewer', 
       selectedSop: null, 
-      sops: [] // Start completely empty! Data comes from the API now.
+      sops: [] 
     }
   },
   
-  // 1. READ (GET) - Fetch data from db.json when the app loads
   async mounted() {
     try {
       const response = await fetch('http://localhost:3000/sops');
@@ -66,9 +58,8 @@ export default {
   },
   
   methods: {
-    // 2. CREATE (POST) - Send new uploaded data to the database
     async addSop(newSop) {
-      newSop.id = String(newSop.id); // JSON Server v1+ requires IDs to be strings
+      newSop.id = String(newSop.id); 
       
       try {
         const response = await fetch('http://localhost:3000/sops', {
@@ -78,8 +69,8 @@ export default {
         });
         const savedSop = await response.json();
         
-        this.sops.push(savedSop); // Add it to the UI
-        this.activeTab = 'viewer'; // Switch back to dashboard
+        this.sops.push(savedSop); 
+        this.$router.push('/viewer'); 
       } catch (error) {
         console.error("Error saving new SOP:", error);
       }
@@ -87,10 +78,9 @@ export default {
 
     openEditor(sop) {
       this.selectedSop = sop;
-      this.activeTab = 'draft';
+      this.$router.push('/draft-builder'); 
     },
 
-    // 3. UPDATE (PUT) - Save edits from the Draft Builder to the database
     async saveSop(updatedSop) {
       try {
         const response = await fetch(`http://localhost:3000/sops/${updatedSop.id}`, {
@@ -100,31 +90,26 @@ export default {
         });
         const finalSop = await response.json();
         
-        // Find the SOP in the UI array and update it
         const index = this.sops.findIndex(s => s.id === finalSop.id);
         if (index !== -1) {
           this.sops[index] = finalSop;
         }
         
-        this.activeTab = 'viewer';
+        this.$router.push('/viewer'); 
         this.selectedSop = null;
       } catch (error) {
         console.error("Error updating SOP:", error);
       }
     },
 
-    // 4. DELETE - Remove SOP from the database
     async deleteSop(id) {
-      // Add a quick confirmation popup so users don't delete by accident!
       if (!confirm("Are you sure you want to delete this SOP?")) return;
 
       try {
-        // 1. Tell json-server to delete it from db.json
         await fetch(`http://localhost:3000/sops/${id}`, {
           method: 'DELETE'
         });
         
-        // 2. Remove it from the Vue array so it disappears from the screen instantly
         this.sops = this.sops.filter(sop => sop.id !== id);
       } catch (error) {
         console.error("Error deleting SOP:", error);
@@ -139,10 +124,10 @@ export default {
 :root {
   --dhl-red: #D40511;
   --dhl-yellow: #FFCC00;
-  --dark-bg: #1A1A1A; /* Slightly softer than pure black */
-  --bg-light: #F0F4F8; /* A very soft, modern grayish-blue background */
+  --dark-bg: #1A1A1A; 
+  --bg-light: #F0F4F8; 
   --surface: #FFFFFF;
-  --text-dark: #2D3748; /* Softer text color, easier to read */
+  --text-dark: #2D3748; 
   --border-soft: #E2E8F0;
 }
 
@@ -154,6 +139,16 @@ body {
   color: var(--text-dark); 
 }
 
+/* NEW: Styles specifically to center the Login screen */
+.login-fullscreen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-light);
+}
+
 .layout { 
   display: flex; 
   min-height: calc(100vh - 150px); 
@@ -161,17 +156,17 @@ body {
 
 .main-content { 
   flex: 1; 
-  padding: 40px; /* Give it more breathing room */
-  background: var(--bg-light); /* Use the soft background instead of white */
+  padding: 40px; 
+  background: var(--bg-light); 
   box-shadow: inset 4px 0 10px rgba(0,0,0,0.02); 
 }
 
 .main-content h2 { 
   margin-top: 0; 
   padding-bottom: 12px; 
-  border-bottom: 3px solid var(--dhl-red); /* Thicker, bolder underline */
+  border-bottom: 3px solid var(--dhl-red); 
   color: var(--dark-bg); 
   font-weight: 800;
-  letter-spacing: -0.5px; /* Tighter letter spacing looks more modern */
+  letter-spacing: -0.5px; 
 }
 </style>

@@ -1,4 +1,18 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "username": "bot_creator",
+      "password": "botpassword123",
+      "role": "bot"
+    },
+    {
+      "id": "2",
+      "username": "admin_reviewer",
+      "password": "admin123",
+      "role": "editor"
+    }
+  ],
   "sops": [
     {
       "id": "1",
