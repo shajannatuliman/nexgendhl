@@ -1,7 +1,10 @@
 <template>
-  <div class="upload-console-view">
+  <!-- Added an ID here so UiPath can verify the view has loaded -->
+  <div id="upload-console-view" class="upload-console-view">
+    
     <div class="page-header">
-      <h2>Data Ingestion Console</h2>
+      <!-- Added an ID here for RPA text validation if needed -->
+      <h2 id="page-title-ingestion">Data Ingestion Console</h2>
       <p>Upload unstructured logistics data. The UiPath RPA bot will process it into a standardized Knowledge Base Draft.</p>
     </div>
     
@@ -13,7 +16,7 @@
       -->
       <UploadForm @process-upload="$emit('add-sop', $event)" />
       
-      <!-- Optional: Add a visual sidebar or instructions area for realism -->
+      <!-- Info Panel -->
       <div class="info-panel">
         <h3>Supported Formats</h3>
         <ul>
@@ -47,7 +50,7 @@ export default {
 }
 
 .page-header h2 {
-  color: var(--text-dark);
+  color: var(--text-dark, #333);
   margin-bottom: 5px;
 }
 
@@ -70,8 +73,7 @@ export default {
 
 .info-panel {
   flex: 1;
-  background: var(--surface-warm); /* Using a variable from your App.vue if you have it, or fallback */
-  background-color: #fef7e0; 
+  background: var(--surface-warm, #fef7e0); 
   padding: 20px;
   border-radius: 8px;
   border: 1px solid #ffe082;
@@ -80,7 +82,7 @@ export default {
 .info-panel h3 {
   margin-top: 0;
   font-size: 16px;
-  color: var(--dhl-red);
+  color: var(--dhl-red, #d40511);
 }
 
 .info-panel ul {

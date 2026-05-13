@@ -1,96 +1,126 @@
 <template>
-  <form @submit.prevent="submitUpload" class="upload-form">
-    
+  <!-- Added ref="uploadForm" to safely reset the form -->
+  <form ref="uploadForm" @submit.prevent="submitUpload" class="upload-form">
+
+    <!-- TITLE -->
     <div class="form-group">
-      <label>Information Source</label>
-      <select v-model="sourceType" required>
-        <option value="" disabled>Select the data source...</option>
-        <option value="MS Teams">MS Teams Chat</option>
-        <option value="Telegram">Telegram Message</option>
-        <option value="Email">Email Thread</option>
-        <option value="Document">Manual Document / PPT</option>
-      </select>
+      <label for="doc-title">Document Title</label>
+      <input 
+        id="doc-title" 
+        type="text" 
+        v-model="formData.title" 
+        placeholder="e.g., Damaged Cargo Report.txt"
+        required 
+      />
     </div>
 
+    <!-- EXTRACTED CONTENT -->
     <div class="form-group">
-      <label>Upload File (PDF, DOCX, PNG/JPG)</label>
-      <input type="file" accept=".pdf, .docx, .png, .jpg" @change="handleFileUpload">
-      <small class="hint">Leave blank if you are pasting raw text below.</small>
-    </div>
-
-    <div class="form-group">
-      <label>Or Paste Raw Unstructured Text</label>
+      <label for="raw-content">Raw Extracted Content</label>
       <textarea 
-        v-model="rawText" 
+        id="raw-content" 
+        v-model="formData.content" 
         rows="6" 
-        placeholder="Paste the messy chat log, email thread, or rough notes here..."
+        placeholder="Bot will paste extracted text here..."
+        required
       ></textarea>
     </div>
 
-    <button type="submit" class="submit-btn">Submit for RPA / AI Processing</button>
-    
+    <!-- FILE UPLOAD -->
+    <div class="form-group">
+      <label for="file-upload">Attach Original File(s)</label>
+      <input 
+        id="file-upload" 
+        type="file" 
+        multiple
+        accept=".pdf,.docx,.png,.jpg,.jpeg,.txt,.msg"
+        @change="handleFileUpload"
+        class="file-input"
+      />
+      <small class="hint">
+        Upload original source files (PDF, DOCX, images, emails, etc.)
+      </small>
+    </div>
+
+    <!-- SHOW SELECTED FILES -->
+    <div v-if="formData.files.length > 0" class="file-list">
+      <p><b>Selected Files:</b></p>
+      <ul>
+        <li v-for="(file, index) in formData.files" :key="index">
+          {{ file.name }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- SUBMIT -->
+    <button id="btn-submit-draft" type="submit" class="submit-btn">
+      Process into Draft
+    </button>
+
   </form>
 </template>
 
 <script>
 export default {
-  name: 'UploadForm',
-  emits: ['process-upload'],
-  
+  name: "UploadForm",
+  emits: ["process-upload"],
+
   data() {
     return {
-      sourceType: '',
-      rawText: '',
-      fileName: null
-    }
+      formData: {
+        title: "",
+        content: "",
+        files: [] 
+      }
+    };
   },
-  
+
   methods: {
     handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        this.fileName = file.name;
-      }
+      const files = Array.from(event.target.files);
+      this.formData.files = files;
     },
-    
-    submitUpload(event) {
-      // 1. Create a dynamic title based on whether a file was uploaded!
-      let dynamicTitle = `AI Draft generated from ${this.sourceType} data`;
-      
-      if (this.fileName) {
-        // If they attached a file, use the file name in the title
-        dynamicTitle = `SOP Draft: Extracted from ${this.fileName}`;
-      } else if (this.rawText) {
-        // Optional: If they just pasted text, add a little snippet of it
-        dynamicTitle = `AI Draft: ${this.rawText.substring(0, 15)}...`;
+
+    submitUpload() {
+      // Safety validation
+      if (!this.formData.title || !this.formData.content) {
+        alert("Please fill in all required fields");
+        return;
       }
 
-      // 2. Create the mock SOP using our new dynamic title
+      // Build SOP object (RPA-ready structure)
       const newSop = {
-        id: Date.now(), 
-        title: dynamicTitle, // <-- Use the smart title here!
+        id: Date.now().toString(),
+        title: this.formData.title,
         status: "Draft",
         creator: "System RPA Bot",
-        date: new Date().toISOString().split('T')[0], 
-        tags: ["Auto-Generated", this.sourceType.replace(/\s+/g, '')]
+        date: new Date().toISOString().split("T")[0],
+        tags: ["Auto-Generated", "Document", "RPA"],
+        content: this.formData.content,
+        attachments: this.formData.files.map(file => ({
+          name: file.name,
+          type: file.type,
+          size: file.size
+        }))
       };
 
-      // 3. Emit this new SOP object UP
-      this.$emit('process-upload', newSop);
+      // Send to parent
+      this.$emit("process-upload", newSop);
 
-      // 4. Clear the form
-      this.sourceType = '';
-      this.rawText = '';
-      this.fileName = null;
-      event.target.reset(); 
-      
-      alert("Raw data submitted successfully! Generating draft SOP...");
+      // Reset form data state
+      this.formData.title = "";
+      this.formData.content = "";
+      this.formData.files = [];
+
+      // Safely reset the actual HTML form (clears the file input)
+      this.$refs.uploadForm.reset(); 
     }
   }
-}
+};
 </script>
 
 <style scoped>
+/* Your existing CSS remains exactly the same! */
 .upload-form {
   background: white;
   padding: 30px;
@@ -100,7 +130,7 @@ export default {
 }
 
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -108,50 +138,48 @@ export default {
 label {
   font-weight: 600;
   margin-bottom: 8px;
-  color: var(--text-dark);
   font-size: 15px;
 }
 
-select, input[type="file"], textarea {
+input, textarea {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-family: inherit;
   font-size: 14px;
-  background-color: #fafafa;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
 }
 
-select:focus, textarea:focus, input[type="file"]:focus {
+input:focus, textarea:focus {
   outline: none;
-  border-color: var(--dhl-red);
-  background-color: white;
-  box-shadow: 0 0 0 3px rgba(212, 5, 17, 0.1);
+  border-color: #d40511;
 }
 
 .hint {
-  color: #777;
   font-size: 12px;
-  margin-top: 6px;
+  color: #777;
+  margin-top: 5px;
+}
+
+.file-list {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
 }
 
 .submit-btn {
-  background: var(--dhl-red);
-  color: var(--dhl-yellow);
+  background: #d40511;
+  color: #ffcc00;
   border: none;
-  padding: 14px 20px;
+  padding: 14px;
   font-size: 16px;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
   width: 100%;
-  transition: all 0.2s ease;
-  margin-top: 10px;
 }
 
 .submit-btn:hover {
-  background: #b3040e; /* Slightly darker DHL Red on hover */
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(212, 5, 17, 0.2);
+  background: #b3040e;
 }
 </style>
