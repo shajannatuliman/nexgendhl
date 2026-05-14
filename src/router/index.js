@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import UploadConsoleView from '../views/UploadConsoleView.vue'
 import ViewerView from '../views/ViewerView.vue'
+import SopDetailView from '../views/SopDetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,12 @@ const router = createRouter({
       path: '/viewer',
       name: 'viewer',
       component: ViewerView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/viewer/:id',
+      name: 'viewer-detail',
+      component: SopDetailView,
       meta: { requiresAuth: true }
     }
   ]

@@ -23,6 +23,7 @@
           @delete-sop="deleteSop"
           @refresh-sops="loadSops"
           @go-back="$router.push('/viewer')"
+          @cancel-edit="selectedSop = null"
         ></router-view>
       </div>
     </div>
@@ -107,7 +108,7 @@ export default {
 
     openEditor(sop) {
       this.selectedSop = sop;
-      this.$router.push('/draft-builder'); 
+      this.$router.push({ name: 'viewer-detail', params: { id: sop.id } });
     },
 
     async saveSop(updatedSop) {

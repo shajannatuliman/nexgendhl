@@ -15,7 +15,6 @@
     </div>
 
     <div v-if="filteredSops.length > 0">
-      <!-- Added the @delete-sop listener here -->
       <SopsCard 
         v-for="sop in filteredSops" 
         :key="sop.id" 
@@ -36,13 +35,12 @@ import SopsCard from '../components/SopsCard.vue'
 
 export default {
   name: 'ViewerView',
-  // Added 'delete-sop' to the emits array
   emits: ['edit-sop', 'delete-sop'],
   components: {
     SopsCard
   },
   props: {
-    sops: {  // Expecting 'sops' array from App.vue
+    sops: {
       type: Array,
       required: true
     }
@@ -54,14 +52,13 @@ export default {
     }
   },
   computed: {
-    filteredSops() { 
-      return this.sops.filter(sop => { 
-        const matchesSearch = sop.title.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
+    filteredSops() {
+      return this.sops.filter(sop => {
+        const matchesSearch = sop.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
                               sop.tags.some(tag => tag.toLowerCase().includes(this.searchQuery.toLowerCase())) ||
                               sop.creator.toLowerCase().includes(this.searchQuery.toLowerCase());
-        
+
         const matchesStatus = this.statusFilter === '' || sop.status === this.statusFilter;
-        
         return matchesSearch && matchesStatus;
       });
     }
