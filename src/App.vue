@@ -4,7 +4,7 @@
   </div>
 
   <div v-else>
-    <AppHeader />
+    <AppHeader :currentUser="currentUser" @logout="logout" />
     
     <div class="layout">
       <AppSidebar 
@@ -16,10 +16,12 @@
         <router-view
           :sops="sops" 
           :sopToEdit="selectedSop"
+          :currentUser="currentUser"
           @add-sop="addSop"
           @edit-sop="openEditor"
           @update-sop="saveSop"
           @delete-sop="deleteSop"
+          @refresh-sops="loadSops"
           @go-back="$router.push('/viewer')"
         ></router-view>
       </div>
@@ -44,22 +46,48 @@ export default {
   data() {
     return {
       selectedSop: null, 
-      sops: [] 
+      sops: [],
+      currentUser: null
     }
   },
   
   async mounted() {
-    try {
-      const response = await fetch('http://localhost:3000/sops');
-      this.sops = await response.json();
-    } catch (error) {
-      console.error("Error fetching SOPs:", error);
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    await this.loadSops();
+  },
+
+  watch: {
+    '$route.name': {
+      handler(routeName) {
+        if (routeName !== 'login') {
+          this.currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+        }
+      },
+      immediate: true
     }
   },
   
   methods: {
+    async loadSops() {
+      try {
+        const response = await fetch('http://localhost:3000/sops');
+        this.sops = await response.json();
+      } catch (error) {
+        console.error("Error fetching SOPs:", error);
+      }
+    },
+
     async addSop(newSop) {
-      newSop.id = String(newSop.id); 
+      newSop.id = String(newSop.id);
+      newSop.creator = this.currentUser?.username || newSop.creator;
+      newSop.versionHistory = [
+        {
+          timestamp: new Date().toISOString(),
+          status: newSop.status,
+          user: newSop.creator,
+          note: 'Created by upload console.'
+        }
+      ];
       
       try {
         const response = await fetch('http://localhost:3000/sops', {
@@ -67,9 +95,10 @@ export default {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newSop)
         });
-        const savedSop = await response.json();
+        await response.json();
         
-        this.sops.push(savedSop); 
+        // Refresh the SOPs list to include the new one
+        await this.loadSops();
         this.$router.push('/viewer'); 
       } catch (error) {
         console.error("Error saving new SOP:", error);
@@ -82,6 +111,16 @@ export default {
     },
 
     async saveSop(updatedSop) {
+      const existing = this.sops.find(s => s.id === updatedSop.id) || {};
+      updatedSop.versionHistory = updatedSop.versionHistory || [];
+      updatedSop.versionHistory.push({
+        timestamp: new Date().toISOString(),
+        status: updatedSop.status,
+        user: this.currentUser?.username || updatedSop.creator || 'Unknown',
+        note: existing.status === updatedSop.status ? 'Updated content.' : `Status changed from ${existing.status || 'Unknown'} to ${updatedSop.status}`
+      });
+      updatedSop.lastUpdated = new Date().toISOString();
+      
       try {
         const response = await fetch(`http://localhost:3000/sops/${updatedSop.id}`, {
           method: 'PUT',
@@ -114,6 +153,12 @@ export default {
       } catch (error) {
         console.error("Error deleting SOP:", error);
       }
+    },
+
+    logout() {
+      localStorage.removeItem('currentUser');
+      this.currentUser = null;
+      this.$router.push('/');
     }
   }
 }
