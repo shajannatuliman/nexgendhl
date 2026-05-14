@@ -23,6 +23,7 @@
           <li><strong>Text:</strong> Direct paste from MS Teams or Telegram.</li>
           <li><strong>PDF:</strong> Scanned manual documents or invoices.</li>
           <li><strong>Word (.docx):</strong> Legacy training materials.</li>
+          <li><strong>Image (.jpg):</strong> Document scans and screenshots.</li>
         </ul>
         <p class="note">Note: Processing time varies based on file size. The RPA bot runs on a continuous schedule.</p>
       </div>

@@ -33,12 +33,12 @@
         id="file-upload" 
         type="file" 
         multiple
-        accept=".txt,.pdf,.docx"
+        accept=".txt,.pdf,.docx,.jpg"
         @change="handleFileUpload"
         class="file-input"
       />
       <small class="hint">
-        Supported formats: .txt, .pdf, .docx only
+        Supported formats: .txt, .pdf, .docx, .jpg
       </small>
     </div>
 
