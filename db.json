@@ -867,6 +867,510 @@
           "note": "Created by upload console."
         }
       ]
+    },
+    {
+      "id": "Wc2CAE6bLQo",
+      "title": "Customer address invalid.",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "Customer address invalid.\nTeam chat says postcode missing.\nFix:\nAdd postcode manually,\nRevalidate address,\nSave and continue booking.",
+      "attachments": [
+        {
+          "name": "Customer address invalid..txt",
+          "type": "text/plain",
+          "size": 138
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:16:47.005Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "CbMe6fruf4A",
+      "title": "Customer Credit Approval and New Customer Onboarding Process",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "Customer Credit Approval and New Customer Onboarding Process\nDocument Status: Draft (Unstandardized)Business Unit: DHL Logistics OperationsProcess Owner: Operations & FinanceLast Updated: Not maintained consistently\n\n1. Purpose\nThe purpose of this Standard Operating Procedure (SOP) is to document the end-to-end process for new customer onboarding with credit approval in DHL Logistics Operations. This SOP aims to explain how new customers are set up in operational and financial systems, how credit checks are conducted, and how approvals or rejections are handled.\nCurrently, this process is handled through a mix of emails, spreadsheets, informal instructions, and experience-based knowledge. This document consolidates existing practices but has not been fully standardized. The intention is to later refine this SOP into a clean and official knowledge article.\n\n2. Scope\nThis SOP applies to:\nOperations teams\nCustomer Service teams\nFinance and Credit Control teams\nSupervisors and Managers involved in customer onboarding\nThis SOP covers:\nNew customer request intake\nCredit evaluation and approval\nSystem setup\nCommunication with stakeholders\nIt does not cover customer contract negotiation or legal agreement signing.\n\n3. Definitions and Abbreviations\nCRM – Customer Relationship Management system\nSAP – Enterprise Resource Planning system used for billing and finance\nCredit Limit – Maximum allowed outstanding amount for a customer\nCash Customer – Customer required to prepay before shipment\nCredit Customer – Customer allowed to ship and pay later based on approved credit terms\n\n4. Roles and Responsibilities\n4.1 Sales Team\nSubmit new customer onboarding request\nProvide complete customer information\nSupport clarifications during credit review\n4.2 Operations Team\nValidate onboarding request completeness\nCoordinate with Finance for system setup\nEnsure customer is ready for operational use\n4.3 Finance / Credit Control Team\nPerform credit checks\nApprove or reject credit requests\nSet credit terms and limits in SAP\n4.4 Management\nApprove exceptional cases\nResolve escalations and delays\n\n5. Process Overview\nThe new customer onboarding and credit approval process consists of the following high-level steps:\nNew customer request received\nInitial validation of request\nCredit evaluation\nApproval or rejection decision\nSystem setup\nConfirmation to stakeholders\nDelays frequently occur due to incomplete information, unclear ownership, or delayed approvals.\n\n6. Detailed Process Steps\n\n6.1 New Customer Request Submission\nNew customer onboarding requests are typically initiated by the Sales team. Requests are submitted through email or shared templates. There is no single standardized form currently used across all regions.\nMinimum information required includes:\nLegal company name\nCompany registration number\nBilling address\nOperational address (if different)\nEstimated monthly volume\nRequested credit limit\nRequested payment terms (e.g., 30 days)\nSome requests arrive with missing or inconsistent information, which causes delays.\n\n6.2 Initial Validation by Operations\nUpon receiving the request, Operations performs a basic validation to ensure that all required information is provided. This step is usually done manually by checking emails and attachments.\nCommon issues found during this stage:\nMissing registration documents\nIncomplete billing address\nNo estimated shipment volume provided\nUnclear payment terms\nWhen information is missing, Operations contacts Sales for clarification. This back-and-forth often happens over multiple emails.\n\n6.3 Credit Evaluation by Finance\nOnce the request is validated, it is forwarded to the Finance or Credit Control team for evaluation. The credit evaluation process may include:\nInternal credit history check (if existing customer in other countries)\nExternal credit bureau checks\nAssessment of requested credit limit versus shipment volume\nReview of financial documents\nBased on the evaluation, Finance decides whether the customer should be:\nApproved as a credit customer\nApproved with a lower credit limit\nApproved as cash-only\nRejected\nThis decision-making process is not always documented clearly.\n\n6.4 Approval Scenarios\n6.4.1 Credit Approved as Requested\nIf the credit request is approved:\nFinance confirms the approved credit limit and payment terms\nDetails are shared with Operations\nSystem setup can begin\n6.4.2 Credit Approved with Conditions\nSometimes credit is approved with conditions such as:\nReduced credit limit\nShorter payment terms\nPartial prepaid requirement\nThese conditions are communicated via email but not always captured in a structured format.\n6.4.3 Credit Rejected\nIf credit is rejected:\nCustomer may be offered cash-only terms\nSales is informed to manage customer expectations\nRequest may be closed or reworked\n\n6.5 System Setup\nAfter credit approval, the Operations and Finance teams proceed with system setup.\nTypical system activities include:\nCreating customer record in CRM\nCreating customer master data in SAP\nAssigning billing and operational roles\nConfiguring tax and invoicing parameters\nSystem setup errors are common due to manual data entry.\n\n6.6 Common System Setup Issues\nFrequently observed issues include:\nDuplicate customer records\nIncorrect billing currency\nWrong tax code assigned\nCredit limit mismatch between email approval and SAP setup\nWhen issues occur, tickets are raised to IT or Finance, causing delays.\n\n6.7 Confirmation to Stakeholders\nOnce setup is completed:\nOperations confirms readiness for shipment processing\nSales is informed that the customer is live\nFinance monitors the first few invoices closely\nThere is no standardized checklist to confirm all steps are completed before go-live.\n\n7. Exception Handling and Escalations\n7.1 Delayed Credit Approval\nIf credit approval takes more than 5 working days:\nOperations escalates to Finance Manager\nSales may request temporary cash terms to start operations\n\n7.2 Urgent Customer Go-Live Requests\nIn some cases, urgent onboarding is required. Temporary workarounds include:\nCash-only setup\nManual billing\nLater credit conversion\nThese practices increase operational risk.\n\n8. Risks and Known Gaps\nThe following issues have been identified:\nHeavy manual processing\nLack of standardized forms\nNo centralized tracking\nDependency on email communication\nLimited audit trail\nNew joiners often struggle to understand the process due to lack of clear documentation.\n\n9. Compliance and Audit Considerations\nImproper customer setup can lead to:\nRevenue leakage\nBad debt exposure\nCompliance violations\nAudit findings\nFinance periodically reviews customer credit exposure, but corrections are reactive rather than preventive.\n\n10. Training and Knowledge Sharing\nCurrently, training is conducted informally through:\nShadowing experienced staff\nEmail instructions\nChat-based guidance\nThis SOP is intended to evolve into a proper training reference.\n\n11. Summary\nThis SOP documents the current-state process for customer credit approval and onboarding. While it captures real operational practices, it lacks standardization, structure, and automation. The content should be transformed into a cleaner SOP, simplified checklist, and searchable Knowledge Base articles.\n",
+      "attachments": [
+        {
+          "name": "Customer Credit Approval and New Customer Onboarding Process.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size": 22437
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:17:15.820Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "x0YNJUYNYzo",
+      "title": "Error Code AUTH_401",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "Error Code: AUTH_401\nUser not authorized to access module.\nResolution:\n- Check AD group access\n- User must be in OPS_FWD_ROLE\n- Logout and login again",
+      "attachments": [
+        {
+          "name": "Error Code AUTH_401.txt",
+          "type": "text/plain",
+          "size": 155
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:17:27.375Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "W8BpHg7hmmQ",
+      "title": "Label not printing properly.",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "Label not printing properly.\nUsually printer cache issue.\nRestart printer service,\nClear queue,\nReprint label.\nIf still blur, change toner.",
+      "attachments": [
+        {
+          "name": "Label not printing properly..txt",
+          "type": "text/plain",
+          "size": 144
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:17:39.054Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "11k6aqpzPvI",
+      "title": "New staff setup steps",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "New staff setup steps:\n✔ Create AD account\n✔ Give email access\n✔ SAP + CW1 role\n✔ Share SOP folder\nDelay usually because SAP request not approved",
+      "attachments": [
+        {
+          "name": "New staff setup steps.txt",
+          "type": "text/plain",
+          "size": 158
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:17:50.374Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "7UDxpEhONmc",
+      "title": "POD upload failed again",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "POD upload failed again 😓\nError msg: “File size too large”\nJust compress the image before uploading.\nJPEG works better than PNG.\nAfter upload, refresh screen twice.",
+      "attachments": [
+        {
+          "name": "POD upload failed again.txt",
+          "type": "text/plain",
+          "size": 175
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:18:01.937Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "JMLkrA8C5p8",
+      "title": "SOP",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "General Background\nIn DHL Logistics Operations, shipment exceptions happen daily due to multiple reasons such as missing information, system validation failures, incorrect routing, or customer-provided errors. These exceptions are usually picked up by the operations team either through system alerts, emails, or messages from supervisors. Because different teams handle exceptions differently, the steps documented here are inconsistent and sometimes incomplete.\nMost of the time, agents rely on chat messages, emails, or screenshots instead of a standardized SOP. This leads to delays, repeated mistakes, and inconsistent customer communication. The notes below come from MS Teams chats, emails, informal training notes, and system error screenshots.\n\n\nCommon Shipment Exception Types Observed\nBased on recent discussions and incidents, the most common shipment exception types include:\nInvalid routing code\nMissing or incorrect customer address\nIncorrect country or postcode mapping\nWeight or dimension mismatch\nDuplicate shipment reference\nSystem authorization errors\nPOD upload failures\nDifferent resolutions were applied by different agents, often without proper documentation.\n\n\n\n\nInformal Step-by-Step Notes \nWhen shipment exception appears, first check the exact error message.\nDo not immediately escalate to IT without basic checks.\nVerify customer address (postcode, city, country).\nConfirm weight and dimensions are realistic.\nRefresh booking screen and retry.\nIf still failing, take screenshot and escalate.\nNo official timeline or escalation matrix was included.\n\nKnown Gaps and Issues Identified\nNo single standardized SOP exists for shipment exceptions.\nResolution steps vary by agent and team.\nCritical steps are hidden in chat messages and emails.\nNew joiners rely heavily on experienced staff instead of documentation.\nRepeated errors occur because learnings are not captured formally.\n",
+      "attachments": [
+        {
+          "name": "SOP.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size": 16755
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:18:16.239Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "H0Z7ZRqk648",
+      "title": "SOP",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "General Backgroundimn\nIn DHL Logistics Operations, shipment exceptions happen daily due to multiple reasons\nsuch as missing information, system validation failures, incorrect routing, or customer-\nprovided errors. These exceptions are usually picked up by the operations team either\nthrough system alerts, emails, or messages from supervisors. Because different teams\nhandle exceptions differently, the steps documented here are inconsistent and sometimes\nincomplete.\nMost of the time, agents rely on chat messages, emails, or screenshots instead of a\nstandardized SOP. This leads to delays, repeated mistakes, and inconsistent customer\ncommunication. The notes below come from MS Teams chats, emails, informal training\nnotes, and system error screenshots.\n\nCommon Shipment Exception Types Observed\nBased on recent discussions and incidents, the most common shipment exception types\ninclude:\n• Invalid routing code\n• Missing or incorrect customer address\n• Incorrect country or postcode mapping\n• Weight or dimension mismatch\n• Duplicate shipment reference\n• System authorization errors\n• POD upload failures\nDifferent resolutions were applied by different agents, often without proper\ndocumentation.\nInformal Step-by-Step Notes\nWhen shipment exception appears, first check the exact error message.\n1. Do not immediately escalate to IT without basic checks.\n2. Verify customer address (postcode, city, country).\n3. Confirm weight and dimensions are realistic.\n4. Refresh booking screen and retry.\n5. If still failing, take screenshot and escalate.\nNo official timeline or escalation matrix was included.\n\nKnown Gaps and Issues Identified\n• No single standardized SOP exists for shipment exceptions.\n• Resolution steps vary by agent and team.\n• Critical steps are hidden in chat messages and emails.\n• New joiners rely heavily on experienced staff instead of documentation.\n• Repeated errors occur because learnings are not captured formally.\n",
+      "attachments": [
+        {
+          "name": "SOP.pdf",
+          "type": "application/pdf",
+          "size": 62319
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:18:30.962Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "m5L8ApQllao",
+      "title": "Customer address invalid.",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "Customer address invalid.\nTeam chat says postcode missing.\nFix:\nAdd postcode manually,\nRevalidate address,\nSave and continue booking.",
+      "attachments": [
+        {
+          "name": "Customer address invalid..txt",
+          "type": "text/plain",
+          "size": 138
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:57:59.004Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "zTsHDF6oxEs",
+      "title": "Customer Credit Approval and New Customer Onboarding Process",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "Customer Credit Approval and New Customer Onboarding Process\nDocument Status: Draft (Unstandardized)Business Unit: DHL Logistics OperationsProcess Owner: Operations & FinanceLast Updated: Not maintained consistently\n\n1. Purpose\nThe purpose of this Standard Operating Procedure (SOP) is to document the end-to-end process for new customer onboarding with credit approval in DHL Logistics Operations. This SOP aims to explain how new customers are set up in operational and financial systems, how credit checks are conducted, and how approvals or rejections are handled.\nCurrently, this process is handled through a mix of emails, spreadsheets, informal instructions, and experience-based knowledge. This document consolidates existing practices but has not been fully standardized. The intention is to later refine this SOP into a clean and official knowledge article.\n\n2. Scope\nThis SOP applies to:\nOperations teams\nCustomer Service teams\nFinance and Credit Control teams\nSupervisors and Managers involved in customer onboarding\nThis SOP covers:\nNew customer request intake\nCredit evaluation and approval\nSystem setup\nCommunication with stakeholders\nIt does not cover customer contract negotiation or legal agreement signing.\n\n3. Definitions and Abbreviations\nCRM – Customer Relationship Management system\nSAP – Enterprise Resource Planning system used for billing and finance\nCredit Limit – Maximum allowed outstanding amount for a customer\nCash Customer – Customer required to prepay before shipment\nCredit Customer – Customer allowed to ship and pay later based on approved credit terms\n\n4. Roles and Responsibilities\n4.1 Sales Team\nSubmit new customer onboarding request\nProvide complete customer information\nSupport clarifications during credit review\n4.2 Operations Team\nValidate onboarding request completeness\nCoordinate with Finance for system setup\nEnsure customer is ready for operational use\n4.3 Finance / Credit Control Team\nPerform credit checks\nApprove or reject credit requests\nSet credit terms and limits in SAP\n4.4 Management\nApprove exceptional cases\nResolve escalations and delays\n\n5. Process Overview\nThe new customer onboarding and credit approval process consists of the following high-level steps:\nNew customer request received\nInitial validation of request\nCredit evaluation\nApproval or rejection decision\nSystem setup\nConfirmation to stakeholders\nDelays frequently occur due to incomplete information, unclear ownership, or delayed approvals.\n\n6. Detailed Process Steps\n\n6.1 New Customer Request Submission\nNew customer onboarding requests are typically initiated by the Sales team. Requests are submitted through email or shared templates. There is no single standardized form currently used across all regions.\nMinimum information required includes:\nLegal company name\nCompany registration number\nBilling address\nOperational address (if different)\nEstimated monthly volume\nRequested credit limit\nRequested payment terms (e.g., 30 days)\nSome requests arrive with missing or inconsistent information, which causes delays.\n\n6.2 Initial Validation by Operations\nUpon receiving the request, Operations performs a basic validation to ensure that all required information is provided. This step is usually done manually by checking emails and attachments.\nCommon issues found during this stage:\nMissing registration documents\nIncomplete billing address\nNo estimated shipment volume provided\nUnclear payment terms\nWhen information is missing, Operations contacts Sales for clarification. This back-and-forth often happens over multiple emails.\n\n6.3 Credit Evaluation by Finance\nOnce the request is validated, it is forwarded to the Finance or Credit Control team for evaluation. The credit evaluation process may include:\nInternal credit history check (if existing customer in other countries)\nExternal credit bureau checks\nAssessment of requested credit limit versus shipment volume\nReview of financial documents\nBased on the evaluation, Finance decides whether the customer should be:\nApproved as a credit customer\nApproved with a lower credit limit\nApproved as cash-only\nRejected\nThis decision-making process is not always documented clearly.\n\n6.4 Approval Scenarios\n6.4.1 Credit Approved as Requested\nIf the credit request is approved:\nFinance confirms the approved credit limit and payment terms\nDetails are shared with Operations\nSystem setup can begin\n6.4.2 Credit Approved with Conditions\nSometimes credit is approved with conditions such as:\nReduced credit limit\nShorter payment terms\nPartial prepaid requirement\nThese conditions are communicated via email but not always captured in a structured format.\n6.4.3 Credit Rejected\nIf credit is rejected:\nCustomer may be offered cash-only terms\nSales is informed to manage customer expectations\nRequest may be closed or reworked\n\n6.5 System Setup\nAfter credit approval, the Operations and Finance teams proceed with system setup.\nTypical system activities include:\nCreating customer record in CRM\nCreating customer master data in SAP\nAssigning billing and operational roles\nConfiguring tax and invoicing parameters\nSystem setup errors are common due to manual data entry.\n\n6.6 Common System Setup Issues\nFrequently observed issues include:\nDuplicate customer records\nIncorrect billing currency\nWrong tax code assigned\nCredit limit mismatch between email approval and SAP setup\nWhen issues occur, tickets are raised to IT or Finance, causing delays.\n\n6.7 Confirmation to Stakeholders\nOnce setup is completed:\nOperations confirms readiness for shipment processing\nSales is informed that the customer is live\nFinance monitors the first few invoices closely\nThere is no standardized checklist to confirm all steps are completed before go-live.\n\n7. Exception Handling and Escalations\n7.1 Delayed Credit Approval\nIf credit approval takes more than 5 working days:\nOperations escalates to Finance Manager\nSales may request temporary cash terms to start operations\n\n7.2 Urgent Customer Go-Live Requests\nIn some cases, urgent onboarding is required. Temporary workarounds include:\nCash-only setup\nManual billing\nLater credit conversion\nThese practices increase operational risk.\n\n8. Risks and Known Gaps\nThe following issues have been identified:\nHeavy manual processing\nLack of standardized forms\nNo centralized tracking\nDependency on email communication\nLimited audit trail\nNew joiners often struggle to understand the process due to lack of clear documentation.\n\n9. Compliance and Audit Considerations\nImproper customer setup can lead to:\nRevenue leakage\nBad debt exposure\nCompliance violations\nAudit findings\nFinance periodically reviews customer credit exposure, but corrections are reactive rather than preventive.\n\n10. Training and Knowledge Sharing\nCurrently, training is conducted informally through:\nShadowing experienced staff\nEmail instructions\nChat-based guidance\nThis SOP is intended to evolve into a proper training reference.\n\n11. Summary\nThis SOP documents the current-state process for customer credit approval and onboarding. While it captures real operational practices, it lacks standardization, structure, and automation. The content should be transformed into a cleaner SOP, simplified checklist, and searchable Knowledge Base articles.\n",
+      "attachments": [
+        {
+          "name": "Customer Credit Approval and New Customer Onboarding Process.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size": 22437
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:58:28.608Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "bgIQgFIWmw0",
+      "title": "Error Code AUTH_401",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "Error Code: AUTH_401\nUser not authorized to access module.\nResolution:\n- Check AD group access\n- User must be in OPS_FWD_ROLE\n- Logout and login again",
+      "attachments": [
+        {
+          "name": "Error Code AUTH_401.txt",
+          "type": "text/plain",
+          "size": 155
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:58:40.209Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "cSsuT6kwm50",
+      "title": "Label not printing properly.",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "Label not printing properly.\nUsually printer cache issue.\nRestart printer service,\nClear queue,\nReprint label.\nIf still blur, change toner.",
+      "attachments": [
+        {
+          "name": "Label not printing properly..txt",
+          "type": "text/plain",
+          "size": 144
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:58:51.894Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "uvoFb44juuY",
+      "title": "New staff setup steps",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "New staff setup steps:\n✔ Create AD account\n✔ Give email access\n✔ SAP + CW1 role\n✔ Share SOP folder\nDelay usually because SAP request not approved",
+      "attachments": [
+        {
+          "name": "New staff setup steps.txt",
+          "type": "text/plain",
+          "size": 158
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:59:03.274Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "x-8sQRCgiR0",
+      "title": "POD upload failed again",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "POD upload failed again 😓\nError msg: “File size too large”\nJust compress the image before uploading.\nJPEG works better than PNG.\nAfter upload, refresh screen twice.",
+      "attachments": [
+        {
+          "name": "POD upload failed again.txt",
+          "type": "text/plain",
+          "size": 175
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:59:14.844Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "cSA72xdax_8",
+      "title": "SOP",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "General Background\nIn DHL Logistics Operations, shipment exceptions happen daily due to multiple reasons such as missing information, system validation failures, incorrect routing, or customer-provided errors. These exceptions are usually picked up by the operations team either through system alerts, emails, or messages from supervisors. Because different teams handle exceptions differently, the steps documented here are inconsistent and sometimes incomplete.\nMost of the time, agents rely on chat messages, emails, or screenshots instead of a standardized SOP. This leads to delays, repeated mistakes, and inconsistent customer communication. The notes below come from MS Teams chats, emails, informal training notes, and system error screenshots.\n\n\nCommon Shipment Exception Types Observed\nBased on recent discussions and incidents, the most common shipment exception types include:\nInvalid routing code\nMissing or incorrect customer address\nIncorrect country or postcode mapping\nWeight or dimension mismatch\nDuplicate shipment reference\nSystem authorization errors\nPOD upload failures\nDifferent resolutions were applied by different agents, often without proper documentation.\n\n\n\n\nInformal Step-by-Step Notes \nWhen shipment exception appears, first check the exact error message.\nDo not immediately escalate to IT without basic checks.\nVerify customer address (postcode, city, country).\nConfirm weight and dimensions are realistic.\nRefresh booking screen and retry.\nIf still failing, take screenshot and escalate.\nNo official timeline or escalation matrix was included.\n\nKnown Gaps and Issues Identified\nNo single standardized SOP exists for shipment exceptions.\nResolution steps vary by agent and team.\nCritical steps are hidden in chat messages and emails.\nNew joiners rely heavily on experienced staff instead of documentation.\nRepeated errors occur because learnings are not captured formally.\n",
+      "attachments": [
+        {
+          "name": "SOP.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size": 16755
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:59:29.439Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "v-SKT8nRIKI",
+      "title": "SOP",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "General Backgroundimn\nIn DHL Logistics Operations, shipment exceptions happen daily due to multiple reasons\nsuch as missing information, system validation failures, incorrect routing, or customer-\nprovided errors. These exceptions are usually picked up by the operations team either\nthrough system alerts, emails, or messages from supervisors. Because different teams\nhandle exceptions differently, the steps documented here are inconsistent and sometimes\nincomplete.\nMost of the time, agents rely on chat messages, emails, or screenshots instead of a\nstandardized SOP. This leads to delays, repeated mistakes, and inconsistent customer\ncommunication. The notes below come from MS Teams chats, emails, informal training\nnotes, and system error screenshots.\n\nCommon Shipment Exception Types Observed\nBased on recent discussions and incidents, the most common shipment exception types\ninclude:\n• Invalid routing code\n• Missing or incorrect customer address\n• Incorrect country or postcode mapping\n• Weight or dimension mismatch\n• Duplicate shipment reference\n• System authorization errors\n• POD upload failures\nDifferent resolutions were applied by different agents, often without proper\ndocumentation.\nInformal Step-by-Step Notes\nWhen shipment exception appears, first check the exact error message.\n1. Do not immediately escalate to IT without basic checks.\n2. Verify customer address (postcode, city, country).\n3. Confirm weight and dimensions are realistic.\n4. Refresh booking screen and retry.\n5. If still failing, take screenshot and escalate.\nNo official timeline or escalation matrix was included.\n\nKnown Gaps and Issues Identified\n• No single standardized SOP exists for shipment exceptions.\n• Resolution steps vary by agent and team.\n• Critical steps are hidden in chat messages and emails.\n• New joiners rely heavily on experienced staff instead of documentation.\n• Repeated errors occur because learnings are not captured formally.\n",
+      "attachments": [
+        {
+          "name": "SOP.pdf",
+          "type": "application/pdf",
+          "size": 62319
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:59:44.240Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "nEYbPH9FNzA",
+      "title": "Teams Message 2",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "Booking Checklist: - Customer PO - Correct Incoterm - Pickup date confirmed - Weight\n& dimensions verified If any missing -► booking rejected",
+      "attachments": [
+        {
+          "name": "Teams Message 2.jpg",
+          "type": "image/jpeg",
+          "size": 20701
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T02:59:56.840Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
+    },
+    {
+      "id": "14A9id13GFQ",
+      "title": "Teams Message",
+      "status": "Draft",
+      "creator": "bot_creator",
+      "date": "2026-05-14",
+      "tags": [
+        "Auto-Generated",
+        "Document",
+        "RPA"
+      ],
+      "content": "7:04 AM\nHey team, shipment 784512 got stuck again. System says \"Invalid Routing Code\". Last\ntime this happened we refreshed the shipment data, logged out, and reprocessed. Also\nmake sure country code is MY not SG. If still fails, raise ticket to IT with screenshot",
+      "attachments": [
+        {
+          "name": "Teams Message.jpg",
+          "type": "image/jpeg",
+          "size": 36456
+        }
+      ],
+      "versionHistory": [
+        {
+          "timestamp": "2026-05-14T03:00:08.432Z",
+          "status": "Draft",
+          "user": "bot_creator",
+          "note": "Created by upload console."
+        }
+      ]
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
-import DraftBuilderView from '../views/DraftBuilderView.vue'
 import UploadConsoleView from '../views/UploadConsoleView.vue'
 import ViewerView from '../views/ViewerView.vue'
 
@@ -11,12 +10,6 @@ const router = createRouter({
       path: '/',
       name: 'login',
       component: LoginView
-    },
-    {
-      path: '/draft-builder',
-      name: 'draft', // CHANGED from 'draft-builder' to match sidebar
-      component: DraftBuilderView,
-      meta: { requiresAuth: true }
     },
     {
       path: '/upload-console',

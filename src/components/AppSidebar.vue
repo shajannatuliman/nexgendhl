@@ -18,13 +18,6 @@
            Upload Console
         </a>
       </li>
-      <li>
-        <a href="#" 
-           :class="['menu-link', { active: currentTab === 'draft' }]"
-           @click.prevent="$emit('change-tab', 'draft')">
-           Draft Builder
-        </a>
-      </li>
     </ul>
   </div>
 </template>
