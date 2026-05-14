@@ -33,12 +33,12 @@
         id="file-upload" 
         type="file" 
         multiple
-        accept=".pdf,.docx,.png,.jpg,.jpeg,.txt,.msg"
+        accept=".txt,.pdf,.docx"
         @change="handleFileUpload"
         class="file-input"
       />
       <small class="hint">
-        Upload original source files (PDF, DOCX, images, emails, etc.)
+        Supported formats: .txt, .pdf, .docx only
       </small>
     </div>
 
@@ -63,6 +63,12 @@
 <script>
 export default {
   name: "UploadForm",
+  props: {
+    currentUser: {
+      type: Object,
+      default: null
+    }
+  },
   emits: ["process-upload"],
 
   data() {
@@ -93,8 +99,8 @@ export default {
         id: Date.now().toString(),
         title: this.formData.title,
         status: "Draft",
-        creator: "System RPA Bot",
-        date: new Date().toISOString().split("T")[0],
+        creator: this.currentUser?.username || "System RPA Bot",
+        date: new Date().toLocaleDateString('en-CA'),
         tags: ["Auto-Generated", "Document", "RPA"],
         content: this.formData.content,
         attachments: this.formData.files.map(file => ({
